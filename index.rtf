@@ -1,0 +1,705 @@
+{\rtf1\ansi\ansicpg950\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="zh-TW">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>\uc0\u55358 \u56819  \u33836 \u33021 \u20986 \u36938 \u25171 \u21253 \u31070 \u22120  \u10024  (\u23436 \u25972 \u20462 \u24489 \u29256 )</title>\
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">\
+    <style>\
+        /* --- \uc0\u20840 \u23616 \u35373 \u23450  --- */\
+        body \{ font-family: 'Nunito', 'Noto Sans TC', sans-serif; background: linear-gradient(135deg, #fcf9f2 0%, #f0f4f8 100%); color: #5c5c5c; max-width: 600px; margin: 0 auto; padding: 20px 20px 100px 20px; min-height: 100vh; box-sizing: border-box; \}\
+        h1 \{ text-align: center; color: #7f95a3; font-weight: 900; margin-bottom: 20px; letter-spacing: 2px; \}\
+\
+        /* --- \uc0\u38914 \u37096 \u25353 \u37397 \u33287 \u25080 \u28014 \u25353 \u37397  --- */\
+        .top-action-bar \{ display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; \}\
+        .action-btn \{ border: none; font-size: 0.9em; cursor: pointer; padding: 8px 14px; border-radius: 12px; transition: 0.2s; font-weight: 800; display: inline-flex; align-items: center; gap: 5px; \}\
+        .clear-btn \{ background: #fdf5f5; color: #d8a7a7; \} .clear-btn:hover \{ background: #d8a7a7; color: white; transform: scale(1.05); \}\
+        .share-btn \{ background: #e6f5ea; color: #7ab88b; \} .share-btn:hover \{ background: #7ab88b; color: white; transform: scale(1.05); \}\
+        .setting-btn \{ background: #ece6f5; color: #937ab8; \} .setting-btn:hover \{ background: #937ab8; color: white; transform: scale(1.05); \}\
+\
+        .fab-btn \{ position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; border-radius: 50%; background: #d8a7a7; color: white; border: none; box-shadow: 0 6px 15px rgba(216, 167, 167, 0.4); font-size: 1.8em; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; transition: 0.3s; \}\
+        .fab-btn:hover \{ transform: scale(1.08) rotate(5deg); background: #cc9797; \}\
+        .magic-btn \{ position: fixed; bottom: 30px; left: 30px; width: 65px; height: 65px; border-radius: 50%; background: #9ab4c2; color: white; border: none; box-shadow: 0 6px 15px rgba(154, 180, 194, 0.4); font-size: 1.8em; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; transition: 0.3s; \}\
+        .magic-btn:hover \{ transform: scale(1.08) rotate(-5deg); background: #8ba5b3; \}\
+\
+        /* --- \uc0\u24392 \u31383 \u33287 \u34920 \u21934 \u35373 \u35336  --- */\
+        .modal-overlay \{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(90, 100, 110, 0.4); backdrop-filter: blur(4px); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.3s ease; \}\
+        @keyframes fadeIn \{ from \{ opacity: 0; \} to \{ opacity: 1; \} \}\
+        .modal-content \{ position: relative; background: #fffcf8; width: 90%; max-width: 400px; border-radius: 24px; padding: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto; \}\
+        @keyframes slideUp \{ from \{ transform: translateY(30px) scale(0.95); \} to \{ transform: translateY(0) scale(1); \} \}\
+        .close-btn \{ position: absolute; top: 15px; right: 15px; background: #f0f0f0; border: none; color: #888; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; \}\
+        .close-btn:hover \{ background: #e0e0e0; color: #555; \}\
+        .modal-content h3 \{ margin-top: 0; margin-bottom: 15px; font-size: 1.3em; color: #7f95a3; text-align: center; \}\
+        .modal-subtitle \{ text-align: center; color: #8c8c8c; font-size: 0.9em; margin-bottom: 15px; line-height: 1.5; \}\
+\
+        .input-group \{ display: flex; flex-direction: column; gap: 12px; margin-bottom: 15px; \}\
+        .input-group select, .input-group input, .input-group textarea \{ width: 100%; box-sizing: border-box; padding: 14px; border: 2px solid #e8e6e1; border-radius: 16px; font-size: 0.95em; background: #fdfdfc; outline: none; transition: 0.3s; font-family: inherit; color: #5c5c5c; \}\
+        .input-group input:focus, .input-group textarea:focus, .input-group select:focus \{ border-color: #c4d4db; background: #fff; \}\
+        \
+        .magic-mode-container \{ display: flex; flex-direction: column; gap: 8px; background: #f6f8fa; padding: 12px 15px; border-radius: 14px; border: 1px dashed #c4d4db; margin-bottom: 15px; \}\
+        .magic-mode-container label \{ display: flex; align-items: center; gap: 8px; font-size: 0.95em; color: #5c5c5c; cursor: pointer; \}\
+        .magic-mode-container input[type="radio"] \{ cursor: pointer; transform: scale(1.1); accent-color: #9ab4c2; \}\
+\
+        .add-btn \{ background: #d8a7a7; color: white; border: none; padding: 15px; border-radius: 16px; cursor: pointer; font-weight: 800; font-size: 1.1em; width: 100%; transition: 0.2s; margin-top: 10px; box-shadow: 0 4px 10px rgba(216, 167, 167, 0.3); \}\
+        .add-btn:hover \{ transform: translateY(-2px); background: #cc9797; \}\
+        .magic-submit-btn \{ background: #9ab4c2; box-shadow: 0 4px 10px rgba(154, 180, 194, 0.3); \}\
+        .magic-submit-btn:hover \{ background: #8ba5b3; \}\
+        .magic-submit-btn:disabled \{ background: #cbd5e1; cursor: not-allowed; transform: none; box-shadow: none; \}\
+        .edit-submit-btn \{ background: #7ab88b; box-shadow: 0 4px 10px rgba(122, 184, 139, 0.3); \}\
+        .edit-submit-btn:hover \{ background: #6da37c; \}\
+\
+        /* --- \uc0\u10024  \u38364 \u37749 \u23383 \u27161 \u31844 \u27171 \u24335  (\u20462 \u24489 \u21152 \u22238 ) \u10024  --- */\
+        .keyword-panel \{ margin-bottom: 15px; \}\
+        .keyword-group-title \{ font-size: 0.85em; color: #8ba5b3; margin-bottom: 8px; font-weight: bold; \}\
+        .keyword-tags \{ display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; \}\
+        .kw-tag \{ background: #f0f4f8; color: #7f95a3; font-size: 0.85em; padding: 6px 12px; border-radius: 20px; cursor: pointer; border: 1px solid #e1e8ed; transition: 0.2s; font-weight: 700; display: inline-block;\}\
+        .kw-tag:hover \{ background: #9ab4c2; color: #fff; border-color: #9ab4c2; transform: translateY(-2px); \}\
+        .history-tag \{ background: #fdf5f5; color: #d8a7a7; border-color: #f7e1e1; \}\
+        .history-tag:hover \{ background: #d8a7a7; color: #fff; border-color: #d8a7a7; \}\
+\
+        .share-option-btn \{ background: #fff; color: #5c5c5c; border: 2px solid #e8e6e1; padding: 15px; border-radius: 16px; cursor: pointer; font-weight: 800; font-size: 1em; width: 100%; transition: 0.2s; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; \}\
+        .share-option-btn:hover \{ background: #f0f4f8; border-color: #9ab4c2; color: #7f95a3;\}\
+\
+        /* --- \uc0\u28165 \u21934 \u33287 \u20219 \u21209 \u21345 \u29255  --- */\
+        .date-section \{ background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); border-radius: 24px; padding: 25px; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(140, 150, 160, 0.05); \}\
+        .date-title \{ font-size: 1.25em; font-weight: 900; margin-bottom: 15px; color: #6a7b87; padding-bottom: 12px; border-bottom: 2px dashed #e8e6e1; \}\
+        .category-header \{ font-size: 0.95em; font-weight: 800; margin: 20px 0 10px 0; padding-left: 5px; color: #8c8c8c; display: flex; align-items: center; \}\
+        \
+        .task-item \{ display: flex; align-items: center; margin-bottom: 12px; padding: 14px; background: #fff; border-radius: 16px; border: 1px solid #f2f0ec; transition: all 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.02); \}\
+        .task-item:hover \{ transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); \}\
+        .task-item input[type="checkbox"] \{ display: none; \}\
+        .check-icon \{ font-size: 1.5em; margin-right: 14px; cursor: pointer; transition: 0.3s; user-select: none; \}\
+        .check-icon::before \{ content: '\uc0\u9898 '; opacity: 0.3; \}\
+        input[type="checkbox"]:checked + .check-icon::before \{ content: '\uc0\u55356 \u57144 '; opacity: 1; filter: saturate(0.8); \}\
+        input[type="checkbox"]:checked + .check-icon \{ transform: scale(1.1); \}\
+        \
+        .task-content \{ flex-grow: 1; \}\
+        .task-title \{ font-weight: 700; margin-bottom: 4px; font-size: 1.05em; color: #5c5c5c; display: flex; align-items: center; gap: 8px;\}\
+        .task-note \{ font-size: 0.85em; color: #9c9c9c; background: #f7f6f4; padding: 6px 10px; border-radius: 8px; display: inline-block; margin-top: 4px;\}\
+        .completed .task-title \{ text-decoration: line-through; color: #c4c4c4; \}\
+        .completed .task-note \{ opacity: 0.5; \}\
+        \
+        .category-tag \{ font-size: 0.75em; padding: 4px 10px; border-radius: 12px; font-weight: 800; \}\
+        .task-actions \{ display: flex; gap: 6px; margin-left: 10px; \}\
+        .delete-btn \{ background: #fdf5f5; color: #d8a7a7; border: none; font-size: 1em; cursor: pointer; padding: 8px; border-radius: 10px; transition: 0.2s; \}\
+        .delete-btn:hover \{ background: #d8a7a7; color: white; transform: scale(1.1); \}\
+        .edit-btn \{ background: #f0f4f8; color: #7f95a3; border: none; font-size: 1em; cursor: pointer; padding: 8px; border-radius: 10px; transition: 0.2s; \}\
+        .edit-btn:hover \{ background: #9ab4c2; color: white; transform: scale(1.1); \}\
+    </style>\
+</head>\
+<body>\
+\
+    <h1>\uc0\u33836 \u33021 \u25171 \u21253 \u31070 \u22120  \u55358 \u56819 </h1>\
+    \
+    <div id="top-bar" class="top-action-bar">\
+        <button class="action-btn setting-btn" onclick="openSettingModal()">\uc0\u9881 \u65039  AI \u24341 \u25806 \u20999 \u25563 </button>\
+        <button class="action-btn share-btn" onclick="openShareModal()" id="btn-share" style="display:none;">\uc0\u55357 \u56548  \u20998 \u20139 /\u20849 \u29992 </button>\
+        <button class="action-btn clear-btn" onclick="clearAllData()" id="btn-clear" style="display:none;">\uc0\u55358 \u56825  \u28165 \u31354 </button>\
+    </div>\
+\
+    <div id="app"></div>\
+\
+    <button class="magic-btn" onclick="openMagicModal()" title="\uc0\u26234 \u24935 \u29986 \u29983 \u28165 \u21934 ">\u55357 \u56481 </button>\
+    <button class="fab-btn" onclick="openModal()" title="\uc0\u25163 \u21205 \u26032 \u22686 \u24453 \u36774 ">\u10133 </button>\
+\
+    <div id="settingModal" class="modal-overlay" onclick="closeModalOnOutsideClick(event, 'settingModal')">\
+        <div class="modal-content" style="border-color: #cba6e8;">\
+            <button class="close-btn" onclick="closeModal('settingModal')">\uc0\u10006 </button>\
+            <h3 style="color: #937ab8;">\uc0\u9881 \u65039  \u36984 \u25799 \u24744 \u30340 \u26234 \u24935 \u24341 \u25806 </h3>\
+            <p class="modal-subtitle" style="text-align: left; font-size: 0.85em; color: #666;">\
+                <b>\uc0\u55357 \u56481  \u20839 \u24314 \u36229 \u36895 \u24341 \u25806  (\u38928 \u35373 )\u65306 </b>\u20813 \u37329 \u38000 \u12289 \u30636 \u38291 \u29986 \u20986 \u23526 \u29992 \u28165 \u21934 \u12290 <br><br>\
+                <b>\uc0\u55358 \u56800  \u30495 \u12539 AI \u24341 \u25806 \u65306 </b>\u21487 \u36028 \u19978  API Key \u35299 \u37782 \u26997 \u33268 \u23458 \u35069 \u21270 \u22823 \u33126 \u65281 <br>\
+                <span style="color: #d8a7a7; font-size: 0.85em;">*\uc0\u33509 \u26410 \u22635 \u23531 \u25110 \u21628 \u21483 \u22833 \u25943 \u65292 \u23559 \u33258 \u21205 \u20999 \u25563 \u22238 \u20839 \u24314 \u24341 \u25806 \u12290 </span>\
+            </p>\
+            <div class="input-group">\
+                <select id="api-provider-select" onchange="updateApiTips()">\
+                    <option value="gemini">\uc0\u55358 \u56800  Google Gemini (\u25512 \u34214 \u65292 \u26377 \u20813 \u36027 \u38989 \u24230 )</option>\
+                    <option value="openai">\uc0\u55357 \u56492  OpenAI ChatGPT (gpt-4o-mini)</option>\
+                </select>\
+                <div id="api-tips" style="font-size: 0.8em; color: #7ab88b; margin-top: -5px; padding-left: 5px;"></div>\
+                <input type="password" id="api-key-input" placeholder="\uc0\u21487 \u30041 \u31354 \u12290 \u33509 \u35201 \u21855 \u29992 \u30495 AI\u65292 \u35531 \u36028 \u19978 \u37329 \u38000 ">\
+            </div>\
+            <button class="add-btn setting-btn" style="background:#937ab8;" onclick="saveApiKey()">\uc0\u55357 \u56510  \u20786 \u23384 \u35373 \u23450 </button>\
+        </div>\
+    </div>\
+\
+    <div id="addModal" class="modal-overlay" onclick="closeModalOnOutsideClick(event, 'addModal')">\
+        <div class="modal-content">\
+            <button class="close-btn" onclick="closeModal('addModal')">\uc0\u10006 </button>\
+            <h3>\uc0\u26032 \u22686 \u24453 \u36774 \u38917 \u30446  \u10024 </h3>\
+            <div class="input-group">\
+                <select id="new-date-select" onchange="toggleCustomDate()"></select>\
+                <input type="date" id="new-date-input" style="display: none;">\
+                <select id="new-category-select" onchange="toggleCustomCategory()" style="display: none;"></select>\
+                <input type="text" id="new-category-input" placeholder="\uc0\u35531 \u36664 \u20837 \u20998 \u39006 \u21517 \u31281  (\u20363 : \u55357 \u56405  \u34915 \u29289 )">\
+            </div>\
+            <div class="input-group">\
+                <input type="text" id="new-title" placeholder="\uc0\u29289 \u21697 \u21517 \u31281 * (\u24517 \u22635 )">\
+                <input type="text" id="new-note" placeholder="\uc0\u20633 \u35387 \u32048 \u31680  (\u36984 \u22635 )">\
+            </div>\
+            <button class="add-btn" onclick="addNewTask()">\uc0\u21152 \u20837 \u28165 \u21934 </button>\
+        </div>\
+    </div>\
+\
+    <div id="editModal" class="modal-overlay" onclick="closeModalOnOutsideClick(event, 'editModal')">\
+        <div class="modal-content" style="border-color: #a1d6b2;">\
+            <button class="close-btn" onclick="closeModal('editModal')">\uc0\u10006 </button>\
+            <h3 style="color: #7ab88b;">\uc0\u32232 \u36655 \u24453 \u36774 \u38917 \u30446  \u9999 \u65039 </h3>\
+            <div class="input-group">\
+                <select id="edit-date-select" onchange="toggleEditCustomDate()"></select>\
+                <input type="date" id="edit-date-input" style="display: none;">\
+                <select id="edit-category-select" onchange="toggleEditCustomCategory()"></select>\
+                <input type="text" id="edit-category-input" placeholder="\uc0\u35531 \u36664 \u20837 \u20998 \u39006 \u21517 \u31281 " style="display: none;">\
+            </div>\
+            <div class="input-group">\
+                <input type="text" id="edit-title" placeholder="\uc0\u29289 \u21697 \u21517 \u31281 * (\u24517 \u22635 )">\
+                <input type="text" id="edit-note" placeholder="\uc0\u20633 \u35387 \u32048 \u31680  (\u36984 \u22635 )">\
+            </div>\
+            <button class="add-btn edit-submit-btn" onclick="saveEditTask()">\uc0\u20786 \u23384 \u20462 \u25913 </button>\
+        </div>\
+    </div>\
+\
+    <div id="magicModal" class="modal-overlay" onclick="closeModalOnOutsideClick(event, 'magicModal')">\
+        <div class="modal-content">\
+            <button class="close-btn" onclick="closeModal('magicModal')">\uc0\u10006 </button>\
+            <h3>\uc0\u20840 \u33021 \u25171 \u21253 \u23567 \u24171 \u25163  \u55357 \u56481 </h3>\
+            <p class="modal-subtitle">\uc0\u40670 \u25802 \u19979 \u26041 \u27161 \u31844 \u65292 \u25110 \u30452 \u25509 \u36664 \u20837 \u20219 \u20309 \u22825 \u39340 \u34892 \u31354 \u30340 \u34892 \u31243 \u65281 </p>\
+            \
+            <div class="keyword-panel">\
+                <div class="keyword-group-title">\uc0\u55357 \u56481  \u40670 \u25802 \u21152 \u20837 \u25512 \u34214 \u38364 \u37749 \u23383 \u65306 </div>\
+                <div class="keyword-tags">\
+                    <span class="kw-tag" onclick="appendKeyword('\uc0\u20986 \u22283 ')">\u9992 \u65039  \u20986 \u22283 </span>\
+                    <span class="kw-tag" onclick="appendKeyword('\uc0\u24118 \u38263 \u36649 ')">\u55357 \u56437  \u24118 \u38263 \u36649 </span>\
+                    <span class="kw-tag" onclick="appendKeyword('\uc0\u24118 \u23542 \u23542 ')">\u55356 \u57212  \u24118 \u23542 \u23542 </span>\
+                    <span class="kw-tag" onclick="appendKeyword('\uc0\u34892 \u21205 \u19981 \u20415 ')">\u55358 \u56765  \u34892 \u21205 \u19981 \u20415 </span>\
+                    <span class="kw-tag" onclick="appendKeyword('\uc0\u24118 \u23541 \u29289 ')">\u55357 \u56341  \u24118 \u23541 \u29289 </span>\
+                    <span class="kw-tag" onclick="appendKeyword('\uc0\u38283 \u36554 \u33258 \u39381 ')">\u55357 \u56983  \u38283 \u36554 \u33258 \u39381 </span>\
+                    <span class="kw-tag" onclick="appendKeyword('\uc0\u20908 \u22825 ')">\u10052 \u65039  \u20908 \u22825 </span>\
+                    <span class="kw-tag" onclick="appendKeyword('\uc0\u28023 \u37002 \u29609 \u27700 ')">\u55356 \u57302 \u65039  \u28023 \u37002 \u29609 \u27700 </span>\
+                    <span class="kw-tag" onclick="appendKeyword('\uc0\u19977 \u22825 \u20841 \u22812 ')">\u55356 \u57234  \u19977 \u22825 \u20841 \u22812 </span>\
+                </div>\
+                \
+                <div class="keyword-group-title" id="history-title" style="display: none; margin-top: 15px;">\uc0\u55357 \u56658  \u26368 \u36817 \u36664 \u20837 \u36942  (\u40670 \u25802 \u30452 \u25509 \u24118 \u20837 )\u65306 </div>\
+                <div id="history-keywords" class="keyword-tags"></div>\
+            </div>\
+\
+            <div class="input-group">\
+                <textarea id="magic-prompt" rows="3" placeholder="\uc0\u20363 \u22914 \u65306 \u24118 \u23481 \u26131 \u32202 \u24373 \u30340 \u26612 \u29356 \u21435 \u21271 \u28023 \u36947 \u30475 \u38634 \u20116 \u22825 \u22235 \u22812 \u65292 \u25105 \u23481 \u26131 \u32963 \u30171 \u65292 \u32780 \u19988 \u21916 \u27489 \u25885 \u24433 ..."></textarea>\
+            </div>\
+\
+            <div id="magic-mode-group" class="magic-mode-container" style="display: none;">\
+                <div style="font-size: 0.85em; color: #8ba5b3; margin-bottom: 4px; font-weight: bold;">\uc0\u30332 \u29694 \u29694 \u26377 \u28165 \u21934 \u65292 \u24744 \u24076 \u26395 \u65306 </div>\
+                <label><input type="radio" name="magic-mode" value="append" checked> \uc0\u10133  \u38468 \u21152 \u22312 \u29694 \u26377 \u28165 \u21934 \u19979 </label>\
+                <label><input type="radio" name="magic-mode" value="overwrite"> \uc0\u55357 \u56785 \u65039  \u28165 \u31354 \u20006 \u37325 \u26032 \u29983 \u25104 </label>\
+            </div>\
+\
+            <button id="magic-submit-btn" class="add-btn magic-submit-btn" onclick="runMagicEngine()">\uc0\u10024  \u29986 \u29983 \u23560 \u23660 \u28165 \u21934 </button>\
+        </div>\
+    </div>\
+\
+    <div id="shareModal" class="modal-overlay" onclick="closeModalOnOutsideClick(event, 'shareModal')">\
+        <div class="modal-content">\
+            <button class="close-btn" onclick="closeModal('shareModal')">\uc0\u10006 </button>\
+            <h3>\uc0\u55357 \u56548  \u20998 \u20139 \u32102 \u31070 \u38538 \u21451 </h3>\
+            <p class="modal-subtitle">\uc0\u35531 \u36984 \u25799 \u24744 \u24819 \u35201 \u30340 \u20998 \u20139 \u26041 \u24335 \u65306 </p>\
+            <button class="share-option-btn" onclick="copyAsText()">\uc0\u55357 \u56541  \u35079 \u35069 \u32020 \u25991 \u23383  (\u36969 \u21512 \u36028 \u21040  LINE)</button>\
+            <button class="share-option-btn" onclick="copyMagicLink()" style="border-color: #9ab4c2; color: #7f95a3;">\uc0\u55357 \u56599  \u35079 \u35069 \u39764 \u27861 \u36899 \u32080  (\u21295 \u20837 \u21040 \u23565 \u26041 \u25163 \u27231 )</button>\
+        </div>\
+    </div>\
+\
+    <script>\
+        // --- \uc0\u36039 \u26009 \u21021 \u22987 \u21270  ---\
+        let data = \{ "checklists": [] \};\
+        let magicHistory = [];\
+        let editingTaskId = null;\
+        let editingTaskOldDate = null;\
+        const appDiv = document.getElementById('app');\
+\
+        const categoryStyles = \{\
+            "\uc0\u55357 \u56499  \u37325 \u35201 \u24517 \u20633 ": \{ bg: "#f5e6e6", color: "#b87a7a", line: "#d6a1a1" \}, \
+            "\uc0\u9992 \u65039  \u20986 \u22283 \u23560 \u23660 ": \{ bg: "#f5eee6", color: "#b8957a", line: "#d6bba1" \}, \
+            "\uc0\u55357 \u56405  \u34915 \u29289 \u31359 \u25645 ": \{ bg: "#e6eef5", color: "#7a9cb8", line: "#a1bcd6" \}, \
+            "\uc0\u55358 \u56820  \u20491 \u20154 \u35703 \u29702 ": \{ bg: "#e6f5ea", color: "#7ab88b", line: "#a1d6b2" \}, \
+            "\uc0\u55357 \u56588  3C\u38651 \u23376 ": \{ bg: "#ece6f5", color: "#937ab8", line: "#bca1d6" \}, \
+            "\uc0\u55358 \u56675  \u39154 \u39135 \u30456 \u38364 ": \{ bg: "#f5ebe6", color: "#b88a7a", line: "#d6aca1" \}, \
+            "\uc0\u55356 \u57212  \u23542 \u23542 \u23560 \u23660 ": \{ bg: "#f5e6ee", color: "#b87a9f", line: "#d6a1c1" \}, \
+            "\uc0\u55357 \u56437  \u38263 \u36649 \u23560 \u23660 ": \{ bg: "#f0e6f5", color: "#8c7ab8", line: "#c1a1d6" \}, \
+            "\uc0\u55358 \u56765  \u28961 \u38556 \u31001 \u36628 \u20855 ": \{ bg: "#e6eef5", color: "#7a9cb8", line: "#a1bcd6" \}, \
+            "\uc0\u10052 \u65039  \u20908 \u23395 \u20445 \u26262 ": \{ bg: "#e6f1f5", color: "#7aaab8", line: "#a1c7d6" \}, \
+            "\uc0\u55356 \u57302 \u65039  \u29609 \u27700 \u35037 \u20633 ": \{ bg: "#e6f5f3", color: "#7ab8ae", line: "#a1d6ce" \}, \
+            "\uc0\u55356 \u57301 \u65039  \u25142 \u22806 \u38706 \u29151 ": \{ bg: "#edf5e6", color: "#96b87a", line: "#b8d6a1" \}, \
+            "\uc0\u55357 \u56508  \u21830 \u21209 \u24037 \u20316 ": \{ bg: "#ebebeb", color: "#7a7a7a", line: "#b3b3b3" \}, \
+            "\uc0\u55357 \u56983  \u20132 \u36890 \u33258 \u39381 ": \{ bg: "#eef5e6", color: "#9fb87a", line: "#c2d6a1" \}, \
+            "\uc0\u55357 \u56341  \u23541 \u29289 \u23560 \u23660 ": \{ bg: "#f5eee6", color: "#b8957a", line: "#d6bba1" \},\
+            "\uc0\u55357 \u56513  \u20854 \u20182 \u38620 \u38917 ": \{ bg: "#f0f0f0", color: "#8c8c8c", line: "#cccccc" \}  \
+        \};\
+        const fallbackStyles = [ \{ bg: "#f5f3ed", color: "#a39b8a", line: "#d1cbb8" \}, \{ bg: "#f0f4f8", color: "#7a9cb8", line: "#a1bcd6" \}, \{ bg: "#f5e6e6", color: "#b87a7a", line: "#d6a1a1" \}, \{ bg: "#e6f5ea", color: "#7ab88b", line: "#a1d6b2" \}, \{ bg: "#ece6f5", color: "#937ab8", line: "#bca1d6" \} ];\
+\
+        function getCategoryStyle(catName) \{\
+            if (categoryStyles[catName]) return categoryStyles[catName];\
+            let charCodeSum = 0; for(let i = 0; i < catName.length; i++) charCodeSum += catName.charCodeAt(i);\
+            return fallbackStyles[charCodeSum % fallbackStyles.length];\
+        \}\
+\
+        // --- \uc0\u36039 \u26009 \u35712 \u23531 \u33287 \u27298 \u26597 \u21295 \u20837  ---\
+        function checkImportData() \{\
+            if(window.location.hash && window.location.hash.startsWith('#share=')) \{\
+                try \{\
+                    const encodedData = window.location.hash.substring(7);\
+                    const decodedStr = decodeURIComponent(atob(encodedData));\
+                    const importedData = JSON.parse(decodedStr);\
+                    if(importedData && importedData.checklists) \{\
+                        if(confirm("\uc0\u55357 \u56550  \u20597 \u28204 \u21040 \u21029 \u20154 \u20998 \u20139 \u30340 \u28165 \u21934 \u65281 \\n\u26159 \u21542 \u35201 \u21295 \u20837 \u20006 \u35206 \u33995 \u24744 \u30446 \u21069 \u30340 \u28165 \u21934 \u65311 ")) \{\
+                            data = importedData; saveData(); alert("\uc0\u9989  \u21295 \u20837 \u25104 \u21151 \u65281 ");\
+                        \}\
+                    \}\
+                    history.replaceState(null, null, ' ');\
+                \} catch(e) \{\}\
+            \}\
+        \}\
+\
+        function loadData() \{\
+            checkImportData(); \
+            const savedData = localStorage.getItem('aesthetic-trip-ultimate'); \
+            if (savedData) data = JSON.parse(savedData);\
+            const savedHistory = localStorage.getItem('magic-history-ultimate');\
+            if (savedHistory) magicHistory = JSON.parse(savedHistory);\
+        \}\
+        function saveData() \{ localStorage.setItem('aesthetic-trip-ultimate', JSON.stringify(data)); \}\
+        function saveHistory(prompt) \{\
+            magicHistory = magicHistory.filter(item => item !== prompt); magicHistory.unshift(prompt);\
+            if (magicHistory.length > 3) magicHistory.pop(); localStorage.setItem('magic-history-ultimate', JSON.stringify(magicHistory));\
+        \}\
+\
+        // --- \uc0\u24392 \u31383 \u36890 \u29992 \u25511 \u21046  ---\
+        function closeModal(modalId) \{ document.getElementById(modalId).style.display = 'none'; \}\
+        function closeModalOnOutsideClick(event, modalId) \{ if (event.target === document.getElementById(modalId)) closeModal(modalId); \}\
+\
+        // --- \uc0\u21151 \u33021 \u65306 \u19968 \u37749 \u28165 \u31354  ---\
+        function clearAllData() \{\
+            if (data.checklists.length === 0) return;\
+            if (confirm("\uc0\u30906 \u23450 \u35201 \u12300 \u19968 \u37749 \u28165 \u31354 \u12301 \u25152 \u26377 \u28165 \u21934 \u21966 \u65311 \\n\u36889 \u20491 \u21205 \u20316 \u28961 \u27861 \u24489 \u21407 \u21908 \u65281 \u55358 \u56825 ")) \{ \
+                data.checklists = []; saveData(); renderTasks(); \
+            \}\
+        \}\
+\
+        // --- \uc0\u21151 \u33021 \u65306 \u21034 \u38500 \u38917 \u30446  (\u20462 \u24489 \u38450 \u21574 \u20659 \u21443 ) ---\
+        function deleteTask(dateString, taskId, taskTitle) \{\
+            const safeTitle = taskTitle || '\uc0\u27492 \u38917 \u30446 ';\
+            if (confirm(`\uc0\u30906 \u23450 \u35201 \u21034 \u38500 \u12300 $\{safeTitle\}\u12301 \u21966 \u65311 \u55357 \u56785 \u65039 `)) \{\
+                const dayIndex = data.checklists.findIndex(d => d.date === dateString);\
+                if (dayIndex !== -1) \{\
+                    data.checklists[dayIndex].tasks = data.checklists[dayIndex].tasks.filter(t => t.id !== taskId);\
+                    if (data.checklists[dayIndex].tasks.length === 0) data.checklists.splice(dayIndex, 1);\
+                    saveData(); renderTasks();\
+                \}\
+            \}\
+        \}\
+\
+        // --- API \uc0\u35373 \u23450  ---\
+        function updateApiTips() \{\
+            const provider = document.getElementById('api-provider-select').value;\
+            const tipsEl = document.getElementById('api-tips');\
+            if(provider === 'gemini') tipsEl.innerHTML = '\uc0\u55357 \u56393  \u21069 \u24448  <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: #9ab4c2;">Google AI Studio</a> \u30003 \u35531  (\u20813 \u32129 \u21345 )';\
+            else tipsEl.innerHTML = '\uc0\u55357 \u56393  \u21069 \u24448  <a href="https://platform.openai.com/api-keys" target="_blank" style="color: #9ab4c2;">OpenAI Platform</a> \u30003 \u35531  (\u38656 \u26377 \u38989 \u24230 )';\
+        \}\
+\
+        function openSettingModal() \{\
+            document.getElementById('settingModal').style.display = 'flex';\
+            document.getElementById('api-provider-select').value = localStorage.getItem('univ_api_provider') || 'gemini';\
+            document.getElementById('api-key-input').value = localStorage.getItem('univ_api_key') || '';\
+            updateApiTips();\
+        \}\
+\
+        function saveApiKey() \{\
+            const provider = document.getElementById('api-provider-select').value;\
+            const key = document.getElementById('api-key-input').value.trim();\
+            localStorage.setItem('univ_api_provider', provider);\
+            if(key) \{\
+                localStorage.setItem('univ_api_key', key);\
+                alert(`\uc0\u9989  \u35373 \u23450 \u25104 \u21151 \u65281 \u31995 \u32113 \u24050 \u25499 \u36617 \u30495 \'b7AI \u22823 \u33126 \u12290 `);\
+            \} else \{\
+                localStorage.removeItem('univ_api_key');\
+                alert(`\uc0\u55357 \u56481  \u37329 \u38000 \u24050 \u28165 \u38500 \u12290 \u31995 \u32113 \u23559 \u20351 \u29992 \u12300 \u26997 \u36895 \u20839 \u24314 \u26234 \u24935 \u24341 \u25806 \u12301 \u28858 \u24744 \u26381 \u21209 \u12290 `);\
+            \}\
+            closeModal('settingModal');\
+        \}\
+\
+        // --- \uc0\u20998 \u20139 \u21151 \u33021  ---\
+        function openShareModal() \{ document.getElementById('shareModal').style.display = 'flex'; \}\
+        function copyAsText() \{\
+            let textOutput = "\uc0\u55358 \u56819  \u25105 \u30340 \u25171 \u21253 \u28165 \u21934 \\n-------------------\\n";\
+            data.checklists.forEach(day => \{\
+                textOutput += `\\n$\{day.date === '\uc0\u55356 \u57234  \u26234 \u24935 \u25171 \u21253 \u32317 \u34920 ' ? '\u55356 \u57234  \u26234 \u24935 \u24555 \u36895 \u32317 \u34920 ' : '\u55357 \u56787 \u65039  ' + day.date\}\\n`;\
+                const grouped = \{\}; day.tasks.forEach(t => \{ if(!grouped[t.category]) grouped[t.category]=[]; grouped[t.category].push(t); \});\
+                Object.keys(grouped).sort().forEach(cat => \{\
+                    textOutput += `\uc0\u12304 $\{cat\}\u12305 \\n`; grouped[cat].forEach(t => \{ textOutput += `$\{t.isCompleted ? "\u9989 " : "\u9898 "\} $\{t.title\}$\{t.note ? ` ($\{t.note\})` : ""\}\\n`; \});\
+                \});\
+            \});\
+            navigator.clipboard.writeText(textOutput).then(() => \{ alert("\uc0\u55357 \u56541  \u35079 \u35069 \u25104 \u21151 \u65281 \u21487 \u20197 \u30452 \u25509 \u36028 \u21040  LINE \u22217 \u65281 "); closeModal('shareModal'); \});\
+        \}\
+        function copyMagicLink() \{\
+            try \{\
+                const encoded = btoa(encodeURIComponent(JSON.stringify(data)));\
+                navigator.clipboard.writeText(`$\{window.location.href.split('#')[0]\}#share=$\{encoded\}`).then(() => \{ alert("\uc0\u55357 \u56599  \u39764 \u27861 \u36899 \u32080 \u35079 \u35069 \u25104 \u21151 \u65281 "); closeModal('shareModal'); \});\
+            \} catch(e) \{ alert("\uc0\u28165 \u21934 \u36942 \u22823 \u65292 \u28961 \u27861 \u29986 \u29983 \u36899 \u32080 \u12290 "); \}\
+        \}\
+\
+        // --- \uc0\u10024  \u38364 \u37749 \u23383 \u27161 \u31844 \u21151 \u33021  \u10024  ---\
+        function appendKeyword(keyword) \{\
+            const textarea = document.getElementById('magic-prompt');\
+            let currentText = textarea.value.trim();\
+            textarea.value = currentText ? currentText + " " + keyword : keyword;\
+            textarea.focus();\
+        \}\
+\
+        function applyHistory(historyText) \{ \
+            document.getElementById('magic-prompt').value = historyText; \
+        \}\
+\
+        function renderHistoryTags() \{\
+            const container = document.getElementById('history-keywords'); \
+            const title = document.getElementById('history-title'); \
+            container.innerHTML = '';\
+            if (magicHistory.length > 0) \{\
+                title.style.display = 'block';\
+                magicHistory.forEach(text => \{\
+                    const span = document.createElement('span'); span.className = 'kw-tag history-tag';\
+                    span.innerText = text.length > 15 ? text.substring(0, 15) + '...' : text;\
+                    span.title = text; span.onclick = () => applyHistory(text); container.appendChild(span);\
+                \});\
+            \} else \{ \
+                title.style.display = 'none'; \
+            \}\
+        \}\
+\
+        // --- \uc0\u36984 \u21934 \u29983 \u25104 \u37007 \u36655  ---\
+        function generateDateOptions(selectElement, defaultVal) \{\
+            selectElement.innerHTML = ''; \
+            const existingDates = data.checklists.map(d => d.date).filter(d => d !== '\uc0\u55356 \u57234  \u26234 \u24935 \u25171 \u21253 \u32317 \u34920 ');\
+            existingDates.forEach(date => \{ const option = document.createElement('option'); option.value = date; option.text = `\uc0\u55357 \u56787 \u65039  $\{date\}`; selectElement.appendChild(option); \});\
+            const generalOption = document.createElement('option'); generalOption.value = '\uc0\u55356 \u57234  \u26234 \u24935 \u25171 \u21253 \u32317 \u34920 '; generalOption.text = '\u55356 \u57234  \u26234 \u24935 \u25171 \u21253 \u32317 \u34920 '; selectElement.appendChild(generalOption);\
+            const customOption = document.createElement('option'); customOption.value = 'custom'; customOption.text = '\uc0\u10133  \u26032 \u22686 \u29305 \u23450 \u26085 \u26399 ...'; selectElement.appendChild(customOption);\
+            if (defaultVal && Array.from(selectElement.options).some(o => o.value === defaultVal)) selectElement.value = defaultVal;\
+            else if (existingDates.length > 0) selectElement.value = existingDates[0]; else selectElement.value = '\uc0\u55356 \u57234  \u26234 \u24935 \u25171 \u21253 \u32317 \u34920 ';\
+        \}\
+\
+        function generateCategoryOptions(selectElement, inputElement, defaultVal) \{\
+            selectElement.innerHTML = ''; const activeCategories = new Set();\
+            data.checklists.forEach(day => \{ day.tasks.forEach(task => \{ if (task.category) activeCategories.add(task.category); \}); \});\
+            if (activeCategories.size === 0) \{ selectElement.style.display = 'none'; inputElement.style.display = 'block'; inputElement.value = ''; \} \
+            else \{\
+                selectElement.style.display = 'block';\
+                activeCategories.forEach(cat => \{ const option = document.createElement('option'); option.value = cat; option.text = cat; selectElement.appendChild(option); \});\
+                const customOption = document.createElement('option'); customOption.value = 'custom'; customOption.text = '\uc0\u10133  \u33258 \u35330 \u26032 \u20998 \u39006 ...'; selectElement.appendChild(customOption);\
+                if (defaultVal && activeCategories.has(defaultVal)) \{ selectElement.value = defaultVal; inputElement.style.display = 'none'; inputElement.value = ''; \} \
+                else \{ selectElement.value = Array.from(activeCategories)[0]; inputElement.style.display = 'none'; inputElement.value = ''; \}\
+            \}\
+        \}\
+\
+        // --- \uc0\u26032 \u22686  / \u32232 \u36655  \u37007 \u36655  ---\
+        function openModal() \{ document.getElementById('addModal').style.display = 'flex'; generateDateOptions(document.getElementById('new-date-select')); toggleCustomDate(); generateCategoryOptions(document.getElementById('new-category-select'), document.getElementById('new-category-input')); \}\
+        function toggleCustomDate() \{ document.getElementById('new-date-input').style.display = document.getElementById('new-date-select').value === 'custom' ? 'block' : 'none'; \}\
+        function toggleCustomCategory() \{ document.getElementById('new-category-input').style.display = document.getElementById('new-category-select').value === 'custom' ? 'block' : 'none'; \}\
+\
+        function openEditModal(dateString, taskId) \{\
+            editingTaskId = taskId; editingTaskOldDate = dateString;\
+            const day = data.checklists.find(d => d.date === dateString); const task = day.tasks.find(t => t.id === taskId);\
+            if(!task) return;\
+            document.getElementById('editModal').style.display = 'flex'; \
+            generateDateOptions(document.getElementById('edit-date-select'), dateString); toggleEditCustomDate();\
+            generateCategoryOptions(document.getElementById('edit-category-select'), document.getElementById('edit-category-input'), task.category);\
+            document.getElementById('edit-title').value = task.title; document.getElementById('edit-note').value = task.note || '';\
+        \}\
+        function toggleEditCustomDate() \{ document.getElementById('edit-date-input').style.display = document.getElementById('edit-date-select').value === 'custom' ? 'block' : 'none'; \}\
+        function toggleEditCustomCategory() \{ document.getElementById('edit-category-input').style.display = document.getElementById('edit-category-select').value === 'custom' ? 'block' : 'none'; \}\
+\
+        function saveEditTask() \{\
+            const dateSelect = document.getElementById('edit-date-select');\
+            let newDate = dateSelect.value === 'custom' ? document.getElementById('edit-date-input').value : dateSelect.value;\
+            if (dateSelect.value === 'custom' && !newDate) return alert("\uc0\u35531 \u36984 \u25799 \u26085 \u26399 \u21908 \u65281 \u55357 \u56787 \u65039 ");\
+            const catSelect = document.getElementById('edit-category-select'); const catInputEl = document.getElementById('edit-category-input');\
+            let newCat = (catSelect.style.display === 'none' || catSelect.value === 'custom') ? catInputEl.value.trim() : catSelect.value;\
+            if (!newCat) newCat = "\uc0\u55357 \u56513  \u20854 \u20182 \u38620 \u38917 "; \
+            const newTitle = document.getElementById('edit-title').value.trim();\
+            if (!newTitle) return alert("\uc0\u35531 \u36664 \u20837 \u29289 \u21697 \u21517 \u31281 \u65281 \u55357 \u56524 ");\
+\
+            const oldDayIndex = data.checklists.findIndex(d => d.date === editingTaskOldDate);\
+            if(oldDayIndex !== -1) \{\
+                let taskToMove = data.checklists[oldDayIndex].tasks.find(t => t.id === editingTaskId);\
+                if(taskToMove) \{\
+                    data.checklists[oldDayIndex].tasks = data.checklists[oldDayIndex].tasks.filter(t => t.id !== editingTaskId);\
+                    if (data.checklists[oldDayIndex].tasks.length === 0) data.checklists.splice(oldDayIndex, 1);\
+                    \
+                    taskToMove.title = newTitle; taskToMove.category = newCat; taskToMove.note = document.getElementById('edit-note').value.trim();\
+                    let newDay = data.checklists.find(d => d.date === newDate);\
+                    if (newDay) \{ newDay.tasks.push(taskToMove); \} else \{ data.checklists.push(\{ date: newDate, tasks: [taskToMove] \}); \}\
+                \}\
+            \}\
+            data.checklists.sort((a, b) => \{ if (a.date === '\uc0\u55356 \u57234  \u26234 \u24935 \u25171 \u21253 \u32317 \u34920 ') return -1; if (b.date === '\u55356 \u57234  \u26234 \u24935 \u25171 \u21253 \u32317 \u34920 ') return 1; return a.date.localeCompare(b.date); \});\
+            saveData(); renderTasks(); closeModal('editModal');\
+        \}\
+\
+        // --- \uc0\u26234 \u24935 \u24341 \u25806 \u26680 \u24515 \u37007 \u36655  ---\
+        function openMagicModal() \{ \
+            document.getElementById('magicModal').style.display = 'flex'; \
+            renderHistoryTags(); // \uc0\u28210 \u26579 \u27161 \u31844 \
+            const modeGroup = document.getElementById('magic-mode-group');\
+            if (data.checklists.length > 0) \{ modeGroup.style.display = 'flex'; document.querySelector('input[name="magic-mode"][value="append"]').checked = true; \} \
+            else \{ modeGroup.style.display = 'none'; \}\
+        \}\
+\
+        // \uc0\u38626 \u32218 \u20839 \u24314 \u35215 \u21063 \
+        function getRuleBasedTasks(input) \{\
+            let days = 1;\
+            const dayMatch = input.match(/([\uc0\u19968 \u20108 \u19977 \u22235 \u20116 \u20845 \u19971 \u20843 \u20061 \u21313 \\d]+)\u22825 /);\
+            if (dayMatch) \{ const dayMap = \{"\uc0\u19968 ":1,"\u20108 ":2,"\u20841 ":2,"\u19977 ":3,"\u22235 ":4,"\u20116 ":5,"\u20845 ":6,"\u19971 ":7,"\u20843 ":8,"\u20061 ":9,"\u21313 ":10\}; days = parseInt(dayMatch[1]) || dayMap[dayMatch[1]] || 1; \}\
+\
+            const isAbroad = /(\uc0\u20986 \u22283 |\u22283 \u22806 |\u28023 \u22806 |\u26085 \u26412 |\u38867 \u22283 |\u27888 \u22283 |\u27472 \u27954 |\u39131 \u27231 |\u27231 \u31080 |\u35703 \u29031 |\u20986 \u22659 )/.test(input);\
+            const isFlight = /(\uc0\u20986 \u22283 |\u28023 \u22806 |\u39131 \u27231 |\u25645 \u27231 |\u27231 \u31080 )/.test(input);\
+            const isWinter = /(\uc0\u20919 |\u20908 |\u38634 |\u23506 \u27969 |\u21271 \u28023 \u36947 |\u20912 \u23798 |\u28369 \u38634 )/.test(input);\
+            const isSummer = /(\uc0\u29105 |\u22799 |\u39640 \u28331 |\u36991 \u26257 |\u28814 \u29105 |\u20013 \u26257 )/.test(input);\
+            const isRain = /(\uc0\u38632 |\u26757 \u38632 |\u39089 \u39080 |\u38647 \u38499 \u38632 )/.test(input);\
+            const isCamp = /(\uc0\u23665 |\u38706 \u29151 |\u37066 \u22806 |\u25142 \u22806 |\u37326 \u39184 |\u30334 \u23731 )/.test(input);\
+            const isDrive = /(\uc0\u38283 \u36554 |\u36554 |\u33258 \u39381 )/.test(input);\
+            const isBaby = /(\uc0\u23542 \u23542 |\u23344 \u20818 |\u23567 \u23401 |\u20818 \u23376 |\u22899 \u20818 )/.test(input);\
+            const isElderly = /(\uc0\u38263 \u36649 |\u32769 \u20154 |\u29238 \u27597 |\u29240 \u23229 |\u38463 \u20844 |\u38463 \u23332 )/.test(input);\
+            const isMobility = /(\uc0\u34892 \u21205 \u19981 \u20415 |\u36650 \u26885 |\u25296 \u26454 |\u28961 \u38556 \u31001 |\u36628 \u20855 )/.test(input);\
+            const isPet = /(\uc0\u23541 \u29289 |\u29399 |\u35987 |\u26612 \u29356 |\u27611 \u23401 )/.test(input);\
+            \
+            let isBeach = /(\uc0\u27700 |\u28023 |\u27801 \u28760 |\u22718 \u19969 |\u27798 \u32361 |\u27891 )/.test(input);\
+            if (isWinter && !/(\uc0\u28331 \u27849 |\u23460 \u20839 \u27891 \u27744 )/.test(input)) isBeach = false;\
+            let needThickCoat = isWinter; if (isSummer) needThickCoat = false;\
+\
+            let magicTasks = [];\
+\
+            magicTasks.push(\{ title: "\uc0\u37666 \u21253  / \u20449 \u29992 \u21345  / \u29694 \u37329 ", category: "\u55357 \u56499  \u37325 \u35201 \u24517 \u20633 ", note: "\u20986 \u38272 \u21069 \u20778 \u20808 \u30906 \u35469 " \});\
+            magicTasks.push(\{ title: "\uc0\u20491 \u20154 \u36523 \u20998 \u35657  / \u20581 \u20445 \u21345 ", category: "\u55357 \u56499  \u37325 \u35201 \u24517 \u20633 ", note: "" \});\
+            magicTasks.push(\{ title: "\uc0\u25163 \u27231 \u33287 \u20805 \u38651 \u32218 ", category: "\u55357 \u56588  3C\u38651 \u23376 ", note: "" \});\
+\
+            if (isCamp) magicTasks.push(\{ title: "\uc0\u22823 \u23481 \u37327 \u34892 \u21205 \u38651 \u28304 ", category: "\u55357 \u56588  3C\u38651 \u23376 ", note: "\u9888 \u65039  \u23665 \u21312 \u20805 \u38651 \u19981 \u20415 " \});\
+            else magicTasks.push(\{ title: "\uc0\u34892 \u21205 \u38651 \u28304 ", category: "\u55357 \u56588  3C\u38651 \u23376 ", note: "\u35352 \u24471 \u20808 \u20805 \u39165 \u38651 " \});\
+\
+            if (isAbroad) \{\
+                magicTasks.push(\{ title: "\uc0\u35703 \u29031 ", category: "\u9992 \u65039  \u20986 \u22283 \u23560 \u23660 ", note: "\u9888 \u65039  \u27298 \u26597 \u26377 \u25928 \u26399 \u38480 \u22823 \u26044 \u20845 \u20491 \u26376 " \});\
+                magicTasks.push(\{ title: "\uc0\u20358 \u22238 \u27231 \u31080  / \u38651 \u23376 \u30331 \u27231 \u35657 ", category: "\u9992 \u65039  \u20986 \u22283 \u23560 \u23660 ", note: "" \});\
+                magicTasks.push(\{ title: "\uc0\u30070 \u22320 \u22806 \u24163 \u29694 \u37329 ", category: "\u9992 \u65039  \u20986 \u22283 \u23560 \u23660 ", note: `\u32004  NT$ $\{days * 3000\} \u31561 \u20540 \u20633 \u29992 ` \});\
+                magicTasks.push(\{ title: "\uc0\u28023 \u22806 \u32178 \u36335 \u21345  / eSIM", category: "\u9992 \u65039  \u20986 \u22283 \u23560 \u23660 ", note: "\u30906 \u35469 \u38283 \u36890 " \});\
+                magicTasks.push(\{ title: "\uc0\u33836 \u29992 \u36681 \u25509 \u38957 ", category: "\u9992 \u65039  \u20986 \u22283 \u23560 \u23660 ", note: "\u30906 \u35469 \u25554 \u24231 \u24418 \u29376 " \});\
+            \}\
+\
+            if (isDrive) \{\
+                if (isAbroad) magicTasks.push(\{ title: "\uc0\u21488 \u28771 \u39381 \u29031  \u65291  \u22283 \u38555 \u39381 \u29031 /\u35695 \u26412 ", category: "\u55357 \u56983  \u20132 \u36890 \u33258 \u39381 ", note: "\u9888 \u65039  \u32570 \u19968 \u19981 \u21487 " \});\
+                else magicTasks.push(\{ title: "\uc0\u27773 \u36554 \u39381 \u29031 ", category: "\u55357 \u56983  \u20132 \u36890 \u33258 \u39381 ", note: "" \});\
+            \}\
+\
+            magicTasks.push(\{ title: "\uc0\u25563 \u27927 \u34915 \u29289  (\u19978 \u34915 /\u35122 \u23376 )", category: "\u55357 \u56405  \u34915 \u29289 \u31359 \u25645 ", note: `\u24118  $\{days + 1\} \u22871 ` \});\
+            magicTasks.push(\{ title: "\uc0\u36028 \u36523 \u20839 \u34915 \u35122  / \u35178 \u23376 ", category: "\u55357 \u56405  \u34915 \u29289 \u31359 \u25645 ", note: `\u24118  $\{days + 1\} \u22871 ` \});\
+            magicTasks.push(\{ title: "\uc0\u24120 \u20633 \u34277 \u21697 ", category: "\u55358 \u56820  \u20491 \u20154 \u35703 \u29702 ", note: "\u33144 \u32963 \u34277 \u12289 \u27490 \u30171 \u34277 " \});\
+\
+            if (needThickCoat) \{\
+                magicTasks.push(\{ title: "\uc0\u38450 \u39080 \u20445 \u26262 \u21402 \u22806 \u22871 ", category: "\u10052 \u65039  \u20908 \u23395 \u20445 \u26262 ", note: "" \});\
+                magicTasks.push(\{ title: "\uc0\u30332 \u29105 \u34915 \u35122  / \u27611 \u24125  / \u25163 \u22871 ", category: "\u10052 \u65039  \u20908 \u23395 \u20445 \u26262 ", note: "\u27915 \u34085 \u24335 \u31359 \u25645 " \});\
+            \}\
+            if (isBeach) \{\
+                magicTasks.push(\{ title: "\uc0\u27891 \u34915  / \u28023 \u28760 \u25302 \u38795 ", category: "\u55356 \u57302 \u65039  \u29609 \u27700 \u35037 \u20633 ", note: "" \});\
+                magicTasks.push(\{ title: "\uc0\u28023 \u27915 \u21451 \u21892 \u38450 \u26348 \u20083 ", category: "\u55356 \u57302 \u65039  \u29609 \u27700 \u35037 \u20633 ", note: "\u20445 \u35703 \u29642 \u29786 \u32676 " \});\
+            \}\
+            if (isBaby) \{\
+                magicTasks.push(\{ title: "\uc0\u20818 \u31461 \u25163 \u20874  / \u20581 \u20445 \u21345 ", category: "\u55357 \u56499  \u37325 \u35201 \u24517 \u20633 ", note: "\u23601 \u37291 \u36523 \u20998 \u35657 " \});\
+                magicTasks.push(\{ title: "\uc0\u23542 \u23542 \u23615 \u24067 ", category: "\u55356 \u57212  \u23542 \u23542 \u23560 \u23660 ", note: `\u32004 \u24118  $\{days * 7 + 3\} \u29255 ` \});\
+                magicTasks.push(\{ title: "\uc0\u22902 \u31881  / \u21103 \u39135 \u21697 ", category: "\u55358 \u56675  \u39154 \u39135 \u30456 \u38364 ", note: `\u28310 \u20633  $\{days + 1\} \u22825 \u20221 \u37327 ` \});\
+                magicTasks.push(\{ title: "\uc0\u22902 \u29942 \u33287 \u20445 \u28331 \u29942 ", category: "\u55356 \u57212  \u23542 \u23542 \u23560 \u23660 ", note: "\u24118 \u26367 \u25563 \u29942 " \});\
+                magicTasks.push(\{ title: "\uc0\u32020 \u27700 \u28629 \u32025 \u24062 ", category: "\u55356 \u57212  \u23542 \u23542 \u23560 \u23660 ", note: "\u24118  2 \u22823 \u21253 " \});\
+                magicTasks.push(\{ title: "\uc0\u36629 \u20415 \u25512 \u36554 ", category: "\u55357 \u56983  \u20132 \u36890 \u33258 \u39381 ", note: "\u20986 \u36938 \u24517 \u20633 " \});\
+            \}\
+            if (isElderly) \{\
+                magicTasks.push(\{ title: "\uc0\u24930 \u24615 \u30149 \u34277 \u29289  / \u36899 \u32396 \u34389 \u26041 \u31627 ", category: "\u55357 \u56437  \u38263 \u36649 \u23560 \u23660 ", note: `\u9888 \u65039  \u21209 \u24517 \u24118 \u36275  $\{days + 3\} \u22825 \u20221 \u37327 ` \});\
+                magicTasks.push(\{ title: "\uc0\u38450 \u28369 \u27683 \u22666 \u38795 ", category: "\u55357 \u56437  \u38263 \u36649 \u23560 \u23660 ", note: "\u20445 \u35703 \u33181 \u33995 \u38450 \u36300 \u20498 " \});\
+                magicTasks.push(\{ title: "\uc0\u33836 \u37329 \u27833  / \u30176 \u30171 \u36028 \u24067 ", category: "\u55357 \u56437  \u38263 \u36649 \u23560 \u23660 ", note: "\u38450 \u26248 \u36554 \u12289 \u35299 \u30176 \u30171 " \});\
+            \}\
+            if (isPet) \{\
+                magicTasks.push(\{ title: "\uc0\u23541 \u29289 \u29309 \u32361  / \u33016 \u32972 \u24118 ", category: "\u55357 \u56341  \u23541 \u29289 \u23560 \u23660 ", note: "\u38450 \u36208 \u22833 \u24517 \u20633 " \});\
+                magicTasks.push(\{ title: "\uc0\u25791 \u20415 \u34955  / \u23615 \u24067 \u22666 ", category: "\u55357 \u56341  \u23541 \u29289 \u23560 \u23660 ", note: "\u20570 \u20491 \u22909 \u20027 \u20154 " \});\
+                magicTasks.push(\{ title: "\uc0\u23541 \u29289 \u39164 \u26009  / \u38646 \u39135 ", category: "\u55357 \u56341  \u23541 \u29289 \u23560 \u23660 ", note: "\u23433 \u25771 \u24773 \u32210 " \});\
+            \}\
+\
+            return magicTasks;\
+        \}\
+\
+        async function runMagicEngine() \{\
+            const input = document.getElementById('magic-prompt').value;\
+            if (!input.trim()) return alert("\uc0\u35531 \u36664 \u20837 \u24744 \u30340 \u34892 \u31243 \u21908 \u65281 \u55357 \u56481 ");\
+            saveHistory(input.trim());\
+\
+            const apiKey = localStorage.getItem('univ_api_key');\
+            const provider = localStorage.getItem('univ_api_provider') || 'gemini';\
+            const btn = document.getElementById('magic-submit-btn');\
+            const originalBtnText = btn.innerHTML;\
+            btn.disabled = true;\
+\
+            let finalTasks = [];\
+\
+            if (apiKey) \{\
+                btn.innerHTML = '\uc0\u55358 \u56800  \u30495 \u12539 AI \u28145 \u24230 \u24605 \u32771 \u20013 ... (\u32004 5~10\u31186 )';\
+                const promptText = `\uc0\u20320 \u26159 \u19968 \u20491 \u23560 \u26989 \u30340 \u34892 \u26446 \u25171 \u21253 \u21161 \u29702 \u12290 \u35531 \u38321 \u35712 \u34892 \u31243 \u65306 \u12300 $\{input\}\u12301 \u65292 \u24605 \u32771 \u21487 \u33021 \u30340 \u31361 \u30332 \u29376 \u27841 \u12289 \u22825 \u27683 \u12289 \u20154 \u29289 \u23660 \u24615 (\u38263 \u36649 /\u23344 \u20818 /\u23541 \u29289 \u31561 )\u12289 \u20132 \u36890 \u24037 \u20855 \u65292 \u21015 \u20986 \u36229 \u35443 \u32048 \u28165 \u21934 \u12290 \
+\uc0\u35531 \u22196 \u26684 \u22238 \u20659 JSON Array\u65292 \u26684 \u24335 \u22914 \u65306 [\{"title": "\u29289 \u21697 \u21517 \u31281 ","category": "\u20998 \u39006 \u21517 \u31281 \u38468 Emoji","note": "\u20633 \u35387 \u35498 \u26126 "\}]\
+\uc0\u25512 \u34214 \u20998 \u39006 : \u55357 \u56499  \u37325 \u35201 \u24517 \u20633 , \u9992 \u65039  \u20986 \u22283 \u23560 \u23660 , \u55357 \u56405  \u34915 \u29289 \u31359 \u25645 , \u55358 \u56820  \u20491 \u20154 \u35703 \u29702 , \u55357 \u56588  3C\u38651 \u23376 , \u55358 \u56675  \u39154 \u39135 \u30456 \u38364 , \u55356 \u57212  \u23542 \u23542 \u23560 \u23660 , \u55357 \u56437  \u38263 \u36649 \u23560 \u23660 , \u55358 \u56765  \u28961 \u38556 \u31001 \u36628 \u20855 , \u55357 \u56341  \u23541 \u29289 \u23560 \u23660 , \u10052 \u65039  \u20908 \u23395 \u20445 \u26262 , \u55356 \u57302 \u65039  \u29609 \u27700 \u35037 \u20633 , \u55356 \u57301 \u65039  \u25142 \u22806 \u38706 \u29151 , \u55357 \u56508  \u21830 \u21209 \u24037 \u20316 , \u55357 \u56983  \u20132 \u36890 \u33258 \u39381 \u12290 \u38480 \u21046 : \u21482 \u35201 \u32020  JSON\u12290 `;\
+\
+                try \{\
+                    let aiResponseText = "";\
+                    if (provider === 'gemini') \{\
+                        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$\{apiKey\}`, \{\
+                            method: 'POST', headers: \{ 'Content-Type': 'application/json' \},\
+                            body: JSON.stringify(\{ contents: [\{ parts: [\{ text: promptText \}] \}], generationConfig: \{ temperature: 0.2 \} \})\
+                        \});\
+                        if (!response.ok) throw new Error(`Gemini \uc0\u37679 \u35492 \u30908 : $\{response.status\}`);\
+                        const resultData = await response.json();\
+                        aiResponseText = resultData.candidates[0].content.parts[0].text;\
+                    \} else \{\
+                        const response = await fetch(`https://api.openai.com/v1/chat/completions`, \{\
+                            method: 'POST', headers: \{ 'Content-Type': 'application/json', 'Authorization': `Bearer $\{apiKey\}` \},\
+                            body: JSON.stringify(\{ model: "gpt-4o-mini", messages: [\{ role: "system", content: "You are a helpful assistant." \}, \{ role: "user", content: promptText \}], temperature: 0.2 \})\
+                        \});\
+                        if (!response.ok) throw new Error(`OpenAI \uc0\u37679 \u35492 \u30908 : $\{response.status\}`);\
+                        const resultData = await response.json();\
+                        aiResponseText = resultData.choices[0].message.content;\
+                    \}\
+\
+                    aiResponseText = aiResponseText.replace(/```json/gi, '').replace(/```/g, '').trim();\
+                    finalTasks = JSON.parse(aiResponseText);\
+                    if (!Array.isArray(finalTasks)) throw new Error("\uc0\u26684 \u24335 \u19981 \u27491 \u30906 ");\
+\
+                \} catch (error) \{\
+                    console.error(error);\
+                    alert("\uc0\u9888 \u65039  API \u21628 \u21483 \u22833 \u25943 \u25110 \u28961 \u25928  (\u21487 \u33021 \u26159 \u38989 \u24230 \u32791 \u30433 \u25110  Key \u37679 \u35492 )\u12290 \\n\\n\u23559 \u33258 \u21205 \u28858 \u24744 \u20999 \u25563 \u33267 \u12300 \u20839 \u24314 \u26997 \u36895 \u26234 \u24935 \u24341 \u25806 \u12301 \u29986 \u29983 \u28165 \u21934 \u65281 ");\
+                    finalTasks = getRuleBasedTasks(input);\
+                \}\
+            \} else \{\
+                btn.innerHTML = '\uc0\u10024  \u20839 \u24314 \u24341 \u25806 \u26997 \u36895 \u20998 \u26512 \u20013 ...';\
+                await new Promise(r => setTimeout(r, 600)); \
+                finalTasks = getRuleBasedTasks(input);\
+            \}\
+\
+            if (data.checklists.length > 0) \{\
+                const mode = document.querySelector('input[name="magic-mode"]:checked').value;\
+                if (mode === 'overwrite') data.checklists = []; \
+            \}\
+\
+            const targetDate = "\uc0\u55356 \u57234  \u26234 \u24935 \u25171 \u21253 \u32317 \u34920 ";\
+            let existingDate = data.checklists.find(d => d.date === targetDate);\
+            if (!existingDate) \{ data.checklists.push(\{ date: targetDate, tasks: [] \}); existingDate = data.checklists[data.checklists.length - 1]; \}\
+            \
+            finalTasks.forEach(task => \{ \
+                existingDate.tasks.push(\{ \
+                    id: 't' + Date.now() + Math.random(), \
+                    title: task.title || "\uc0\u26410 \u30693 \u29289 \u21697 ", \
+                    isCompleted: false, \
+                    category: task.category || "\uc0\u55357 \u56513  \u20854 \u20182 \u38620 \u38917 ", \
+                    note: task.note || "" \
+                \}); \
+            \});\
+\
+            data.checklists.sort((a, b) => \{ if (a.date === targetDate) return -1; if (b.date === targetDate) return 1; return a.date.localeCompare(b.date); \});\
+            \
+            saveData(); renderTasks(); \
+            document.getElementById('magic-prompt').value = ''; \
+            closeModal('magicModal');\
+            \
+            btn.innerHTML = originalBtnText; btn.disabled = false;\
+        \}\
+\
+        function addNewTask() \{\
+            const dateSelect = document.getElementById('new-date-select');\
+            let dateInput = dateSelect.value === 'custom' ? document.getElementById('new-date-input').value : dateSelect.value;\
+            if (dateSelect.value === 'custom' && !dateInput) return alert("\uc0\u35531 \u36984 \u25799 \u26085 \u26399 \u21908 \u65281 \u55357 \u56787 \u65039 ");\
+            \
+            const catSelect = document.getElementById('new-category-select');\
+            const catInputEl = document.getElementById('new-category-input');\
+            let catInput = (catSelect.style.display === 'none' || catSelect.value === 'custom') ? catInputEl.value.trim() : catSelect.value;\
+            if (!catInput) catInput = "\uc0\u55357 \u56513  \u20854 \u20182 \u38620 \u38917 "; \
+\
+            const titleInput = document.getElementById('new-title').value.trim();\
+            if (!titleInput) return alert("\uc0\u35531 \u36664 \u20837 \u29289 \u21697 \u21517 \u31281 \u65281 \u55357 \u56524 ");\
+\
+            const newTask = \{ id: 't' + Date.now(), title: titleInput, isCompleted: false, category: catInput, note: document.getElementById('new-note').value.trim() \};\
+\
+            let existingDate = data.checklists.find(d => d.date === dateInput);\
+            if (existingDate) \{ existingDate.tasks.push(newTask); \} else \{ data.checklists.push(\{ date: dateInput, tasks: [newTask] \}); \}\
+            \
+            data.checklists.sort((a, b) => \{ if (a.date === '\uc0\u55356 \u57234  \u26234 \u24935 \u25171 \u21253 \u32317 \u34920 ') return -1; if (b.date === '\u55356 \u57234  \u26234 \u24935 \u25171 \u21253 \u32317 \u34920 ') return 1; return a.date.localeCompare(b.date); \});\
+            saveData(); renderTasks(); document.getElementById('new-title').value = ''; document.getElementById('new-note').value = ''; catInputEl.value = ''; closeModal('addModal');\
+        \}\
+\
+        // --- \uc0\u30059 \u38754 \u28210 \u26579  ---\
+        function renderTasks() \{\
+            appDiv.innerHTML = ''; \
+            const btnShare = document.getElementById('btn-share');\
+            const btnClear = document.getElementById('btn-clear');\
+            \
+            if(data.checklists.length === 0) \{\
+                btnShare.style.display = 'none'; btnClear.style.display = 'none';\
+                appDiv.innerHTML = '<div style="text-align:center; padding: 60px 20px; color:#a6b5c0; font-size: 1.1em; line-height: 1.8;">\uc0\u28165 \u21934 \u31354 \u31354 \u30340 \u21602  \u9729 \u65039 <br>\u25353 \u19979 \u24038 \u19979 \u35282 \u30340  \u55357 \u56481  \u35731  AI \u28858 \u24744 \u28310 \u20633 \u28165 \u21934 \u21543 \u65281 </div>';\
+                return;\
+            \} else \{\
+                btnShare.style.display = 'inline-flex'; btnClear.style.display = 'inline-flex';\
+            \}\
+\
+            data.checklists.forEach(day => \{\
+                const section = document.createElement('div');\
+                section.className = 'date-section';\
+                \
+                const title = document.createElement('div'); title.className = 'date-title';\
+                title.innerHTML = day.date === '\uc0\u55356 \u57234  \u26234 \u24935 \u25171 \u21253 \u32317 \u34920 ' ? `\u55356 \u57234  \u26234 \u24935 \u24555 \u36895 \u32317 \u34920 ` : `\u55357 \u56787 \u65039  $\{day.date\}`;\
+                section.appendChild(title);\
+\
+                const groupedTasks = \{\};\
+                day.tasks.forEach(task => \{ if (!groupedTasks[task.category]) groupedTasks[task.category] = []; groupedTasks[task.category].push(task); \});\
+\
+                Object.keys(groupedTasks).sort().forEach(category => \{\
+                    const style = getCategoryStyle(category);\
+                    const catHeader = document.createElement('div'); catHeader.className = 'category-header';\
+                    catHeader.innerHTML = `<span style="background:$\{style.line\}; width:8px; height:16px; border-radius:4px; margin-right:10px; display:inline-block;"></span>$\{category\}`;\
+                    section.appendChild(catHeader);\
+\
+                    groupedTasks[category].forEach(task => \{\
+                        const itemDiv = document.createElement('div'); itemDiv.className = 'task-item';\
+                        const checkbox = document.createElement('input'); checkbox.type = 'checkbox'; checkbox.id = task.id; checkbox.checked = task.isCompleted;\
+                        checkbox.onchange = (e) => \{ task.isCompleted = e.target.checked; saveData(); renderTasks(); \};\
+\
+                        const checkLabel = document.createElement('label'); checkLabel.className = 'check-icon'; checkLabel.htmlFor = task.id; \
+                        const content = document.createElement('div'); content.className = `task-content $\{task.isCompleted ? 'completed' : ''\}`;\
+                        const noteHtml = task.note ? `<div class="task-note">$\{task.note\}</div>` : '';\
+\
+                        content.innerHTML = `<div class="task-title">$\{task.title\} <span class="category-tag" style="background:$\{style.bg\}; color:$\{style.color\};">$\{category.split(' ')[0]\}</span></div>$\{noteHtml\}`;\
+\
+                        const actionsDiv = document.createElement('div'); actionsDiv.className = 'task-actions';\
+                        \
+                        const editBtn = document.createElement('button'); editBtn.className = 'edit-btn'; editBtn.innerHTML = '\uc0\u9999 \u65039 '; \
+                        editBtn.onclick = () => openEditModal(day.date, task.id);\
+                        \
+                        const deleteBtn = document.createElement('button'); deleteBtn.className = 'delete-btn'; deleteBtn.innerHTML = '\uc0\u10006 '; \
+                        // \uc0\u10024  \u22312 \u36889 \u35041 \u20659 \u20837  task.title \u30906 \u20445 \u38450 \u21574 \u24392 \u31383 \u33021 \u27491 \u24120 \u35712 \u21462 \u21517 \u31281 \
+                        deleteBtn.onclick = () => deleteTask(day.date, task.id, task.title);\
+\
+                        actionsDiv.appendChild(editBtn); actionsDiv.appendChild(deleteBtn);\
+                        itemDiv.appendChild(checkbox); itemDiv.appendChild(checkLabel); itemDiv.appendChild(content); itemDiv.appendChild(actionsDiv);\
+                        section.appendChild(itemDiv);\
+                    \});\
+                \});\
+                appDiv.appendChild(section);\
+            \});\
+        \}\
+\
+        loadData();\
+        renderTasks();\
+    </script>\
+</body>\
+</html>}
